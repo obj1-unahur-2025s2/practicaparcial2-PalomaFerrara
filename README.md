@@ -16,7 +16,9 @@ Se pide modelar las abstracciones necesarias para soportar los siguientes requer
     - Guerrero: Siempre da un extra de 100.
     - Cazador: El extra depende del potencial ofensivo de su mascota. Las mascotas sin garras tienen un potencial ofensivo igual a su fuerza. Las que tienen garras duplican dicho valor.
     - Brujo: No da ningún extra.
-En el caso particular de los orcos, producto de su brutalidad innata, su potencial ofensivo es un 10% más.
+    
+    En el caso particular de los orcos, producto de su brutalidad innata, su potencial ofensivo es un 10% más.
+
 
 
 2. Saber si un personaje es groso. Esto se da si es inteligente o es groso en su rol.
