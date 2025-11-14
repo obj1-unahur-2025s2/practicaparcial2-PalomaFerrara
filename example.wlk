@@ -108,3 +108,4 @@ class Ejercito {
   method ordenadosMasPoderosos() = tropa.sortBy({t1, t2 => t1.poderOfensivo() > t2.poderOfensivo()})
   method quitarLosMasFuertes() {tropa.removeAll(self.losMasPoderosos())}
 }
+//sadsad
