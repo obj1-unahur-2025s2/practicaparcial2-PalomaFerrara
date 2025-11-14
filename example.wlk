@@ -71,16 +71,39 @@ method esLongeva(){return self.edad()>10}
 }
 
 
-class Localidad{
-var ejercito=[]
+class Localidad {
+  var ejercito = []
+
+  method poderOfensivo() = ejercito.poderOfensivo()
+  method serOcupada(unEjercito)
+}
+
+class Aldea inherits Localidad {
+  const maxTropa
+  override method serOcupada(unEjercito) {
+    if(maxTropa < unEjercito.tamaño()){
+      ejercito = [new Ejercito (tropa = unEjercito.losMasPoderosos())]
+      unEjercito.quitarLosMasFuertes()
+    }
+    else {ejercito = unEjercito}
+  }
 }
 
 class Ciudad inherits Localidad {
-
+  override method poderOfensivo() = super() + 300
+  override method serOcupada(unEjercito) {ejercito = unEjercito}
 }
 
-class Aldea inherits Localidad{
-var maxHabitantes 
+class Ejercito {
+  const tropa = []
 
-
+  method tamaño() = tropa.size()
+  method poderOfensivo() = tropa.sum({m => m.potencial()})
+  method invadir(unaLocalidad) {
+    if(self.puedeInvadir(unaLocalidad)){unaLocalidad.serOcupada(self)}
+  }
+  method puedeInvadir(unaLocalidad) = self.poderOfensivo() > unaLocalidad.poderOfensivo()
+  method losMasPoderosos() = self.ordenadosMasPoderosos().take(10)
+  method ordenadosMasPoderosos() = tropa.sortBy({t1, t2 => t1.poderOfensivo() > t2.poderOfensivo()})
+  method quitarLosMasFuertes() {tropa.removeAll(self.losMasPoderosos())}
 }
