@@ -99,9 +99,10 @@ class Ejercito {
 
   method tamaño() = tropa.size()
   method poderOfensivo() = tropa.sum({m => m.potencial()})
-  method invadir(unaLocalidad) {
-    if(self.puedeInvadir(unaLocalidad)){unaLocalidad.serOcupada(self)}
-  }
+  method invadir(unaLocalidad) {if(self.puedeInvadir(unaLocalidad)){unaLocalidad.serOcupada(self)} }
+
+  method reclutar(personaje){tropa.add(personaje)}
+
   method puedeInvadir(unaLocalidad) = self.poderOfensivo() > unaLocalidad.poderOfensivo()
   method losMasPoderosos() = self.ordenadosMasPoderosos().take(10)
   method ordenadosMasPoderosos() = tropa.sortBy({t1, t2 => t1.poderOfensivo() > t2.poderOfensivo()})
